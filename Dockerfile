@@ -28,7 +28,8 @@ RUN \
 	udev \
 	unrar \
 	wget \
-	jq && \
+	jq \
+        execstack && \
  echo "**** Udevadm hack ****" && \
  mv /sbin/udevadm /sbin/udevadm.bak && \
  echo "exit 0" > /sbin/udevadm && \
@@ -45,6 +46,7 @@ RUN \
  mv /sbin/udevadm.bak /sbin/udevadm && \
  echo "**** ensure abc user's home folder is /app ****" && \
  usermod -d /app abc && \
+ execstack -c usr/lib/plexmediaserver/lib/libgnsdk_dsp.so.3.10.3 && \
  echo "**** cleanup ****" && \
  apt-get clean && \
  rm -rf \
