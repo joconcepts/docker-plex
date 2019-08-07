@@ -8,7 +8,7 @@ steps:
     registry: registry.verfriemlt.de
     repo: registry.verfriemlt.de/plex
     tags:
-      - ${DRONE_COMMIT_BRANCH}
+      - latest 
     dockerfile: Dockerfile
     username:
       from_secret: docker_username
