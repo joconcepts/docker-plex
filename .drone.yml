@@ -1,0 +1,16 @@
+kind: pipeline
+name: default
+
+steps:
+- name: docker_plex
+  image: plugins/docker
+  settings:
+    registry: registry.verfriemlt.de
+    repo: registry.verfriemlt.de/plex
+    tags:
+      - ${DRONE_COMMIT_BRANCH}
+    dockerfile: Dockerfile
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
